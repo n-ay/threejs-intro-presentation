@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script type="module" src="script.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>three.js | introduction</title>
+  <link rel="icon" type="image/x-icon" href="uploads/cube_fav.jpeg">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4//dist/reveal.css">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4//dist/theme/night.css" id="theme">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!--       Slide 1 -->
+      <section>
+        <section>
+          <h3 align="center"> Introduction to</h3>
+          <h2 style="color:#FFFF00">three.js</h2>
+          <iframe src="iframes/intro-cube.html" frameborder="0"></iframe>
+        </section>
+
+        <section>
+          <p align="center">
+            <iframe src="https://threejs.org/" width="800" height="600" title="ThreeJS website"></iframe>
+          </p>
+        </section>
+      </section>
+
+      <!--       Slide 2 -->
+
+      <section>
+        <p align="center">
+        <h3 style="color:#FFFF00">About three.js</h3>
+        <h4>
+          <ul>
+            <li>Three.js is a 3D library used to get 3D content on a webpage.</li>
+            <li>It is an abstraction layer built on top of webGL</li>
+          </ul>
+        </h4>
+        </p>
+      </section>
+
+      <!--       Slide 3 -->
+      <section>
+        <section>
+          <h3>Structure of three.js</h3>
+          <!-- <h3 align="center" style="color:#FFFF00">three.js</h3> -->
+          <img src="./uploads/threejs-structure.svg" />
+        </section>
+        <section>
+          <h4>
+            <ul>
+              <li>The scenegraph has a secene object as its root.</li>
+              <li>A scene and a camera is passed to a Renderer.</li>
+              <li>Mesh, Geometry, and Materials are used for specifying the geometry and texture of 3D models. </li>
+            </ul>
+          </h4>
+        </section>
+      </section>
+
+      <!--       Slide 4 Optional: Hello Cube-->
+
+
+      <!--       Slide 5 -->
+      <section>
+        <section>
+          <h3 align="center" style="color:#FFFF00">Creating a Scene</h3>
+          <h4>To display anything, we need: A scene, A camera and a renderer.</h4>
+          <img src="./uploads/init.png" />
+        </section>
+        <section>
+          <h3>SceneGraph for basic cube:</h3>
+          <img src="/uploads/scene.png"></img>
+        </section>
+        <section>
+          <h4>Adding the Cube</h4>
+
+          <pre class="overlay-full language-none"
+            style="font-size: 24px;"><code>const geometry = new THREE.BoxGeometry( 1, 1, 1 );</code></pre>
+          <pre class="overlay-full language-none"
+            style="font-size: 24px;"><code>const material = new THREE.MeshBasicMaterial({color: 0x00ff00}s);</code></pre>
+          <pre class="overlay-full language-none"
+            style="font-size: 24px;"><code>const cube = new THREE.Mesh( geometry, material );</code></pre>
+          <pre class="overlay-full language-none" style="font-size: 24px;"><code>scene.add( cube );</code></pre>
+          <pre class="overlay-full language-none" style="font-size: 24px;"><code>camera.position.z = 5;</code></pre>
+        </section>
+        <section>
+          <h4>Rendering the Scene</h4>
+
+          <pre><code>function animate() </pre></code>
+          <pre><code> {</pre></code>
+          <pre><code>  requestAnimationFrame( animate );</pre></code>
+          <pre><code>  renderer.render( scene, camera );</pre></code>
+          <pre><code> }</pre></code>
+          <pre><code>  animate();</pre></code>
+        </section>
+
+        <section>
+          <h4>Animating the Cube</h4>
+          <pre><code>
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+          </code></pre>
+        </section>
+        <section>
+          <h4>Here's the above implemented code:</h4>
+          <!-- <iframe src="/iframes/adding-scene.html" frameborder="0"></iframe> -->
+          <embed src="https://hello-cube.ayeshanasim.repl.co/" width=200 height=200
+            onerror="alert('URL invalid !!');" />
+        </section>
+      </section>
+
+
+      <!--       title Slide-->
+
+      <section>
+        <h3>Components of </h3>
+        <h3 align="center" style="color:#FFFF00">three.js</h3>
+      </section>
+
+      <!--       Slide 6 -->
+      <section>
+        <section>
+          <h3>1. Core</h3>
+          <h4>Contains classes related but not limited to BufferGeometry, clock, Object3D, layers etc.</h4>
+        </section>
+        <section>
+          <h3 align="center" style="color:#FFFF00">BufferAttribute</h3>
+          <h4>This class stores data for an attribute (such as vertex positions, face indices, normals, colors, UVs, and
+            any custom attributes ) associated with a BufferGeometry, which allows for more efficient passing of data to
+            the GPU.</h4>
+        </section>
+        <section>
+          <h3 align="center" style="color:#FFFF00">BufferGeometry</h3>
+          <h4>A representation of mesh, line, or point geometry. Includes vertex positions, face indices, normals,
+            colors, UVs, and custom attributes within buffers</h4>
+        </section>
+        <section>
+          <h3 align="center" style="color:#FFFF00">Object3D</h3>
+          <h4>The base class for most objects in three.js and provides a set of properties and methods for manipulating
+            objects in 3D space.</h4>
+        </section>
+        <section>
+          <h4>Some examples are:</h4>
+          <embed src="https://threejs.org/examples/#webgl_buffergeometry" width=600 height=600
+            onerror="alert('URL invalid !!');" />
+
+        </section>
+      </section>
+
+      <!--       Slide 7 -->
+      <section>
+        <section>
+          <h3>2. Camera</h3>
+          <h4>There are various camera classes in three.js like Orthographic Camera, Perspective Camera, etc.</h4>
+        </section>
+        <section>
+          <h3 align="center" style="color:#FFFF00">Perspective Cameras</h3>
+          <h4>Camera class that uses perspective projection, and has the methods and properties accordingly.</h4>
+        </section>
+        <section>
+          <h4>Some examples:</h4>
+          <embed src="https://threejs.org/examples/#webgl_camera" width=600 height=600
+            onerror="alert('URL invalid !!');" />
+        </section>
+      </section>
+
+      <!--       Slide 8 -->
+      <section>
+        <section>
+          <h3>3. Renderers</h3>
+          <h4 align="center" style="color:#FFFF00">
+            three.js has various renderers like: </h4>
+          <h4>
+            <ul>
+              <li>WebGLMultipleRenderTargets</li>
+              <li>WebGLRenderer</li>
+              <li>WebGL1Renderer</li>
+              <li> WebGLRenderTarget</li>
+              <li>WebGL3DRenderTarget</li>
+              <li> WebGLArrayRenderTarget</li>
+              <li> WebGLCubeRenderTarget</li>
+            </ul>
+          </h4>
+        </section>
+        <section>
+          <h3 align="center" style="color:#FFFF00">For Example,</h3>
+          <h4>WebGLMultipleRenderTargets is a special render target that enables a fragment shader to write to several
+            textures. This approach is useful for advanced rendering techniques like post-processing or deferred
+            rendering.</h4>
+        </section>
+        <section>
+          <h4>Example:</h4>
+          <embed src="https://threejs.org/examples/#webgl2_multiple_rendertargets" width=600 height=600
+            onerror="alert('URL invalid !!');" />
+        </section>
+      </section>
+
+      <!--       Slide 9 -->
+      <section>
+        <section>
+          <h3>4. Animation</h3>
+          <h4 align="center" style="color:#FFFF00">For Animations in three.js we have the following classes:</h4>
+          <h4>
+            <ul>
+              <li>AnimationAction</li>
+              <li>AnimationClip</li>
+              <li>AnimationMixer</li>
+              <li>AnimationObjectGroup</li>
+              <li>AnimationUtils</li>
+              <li>KeyframeTrack</li>
+              <li>PropertyBinding</li>
+              <li>PropertyMixer</li>
+            </ul>
+          </h4>
+        </section>
+        <section>
+          <h4>
+            <ul>
+              <li>AnimationClip is a reusable set of keyframe tracks which represent an animation.</li>
+              <li>AnimationActions schedule the performance of the animations which are stored in AnimationClips.</li>
+              <li>AnimationUtils is an object with various functions to assist with animations,and is used internally.
+              </li>
+            </ul>
+          </h4>
+        </section>
+        <section>
+          <h4>A cool example:</h4>
+          <embed src="https://threejs.org/examples/#webgl_animation_keyframes" width=600 height=600
+            onerror="alert('URL invalid !!');" />
+        </section>
+      </section>
+
+      <!--       Slide 10 -->
+      <section>
+        <section>
+          <h3>5. Constants</h3>
+          <h4 align="center" style="color:#FFFF00">
+            There are constants for all components of three.js, including:</h4>
+          <h4>
+            <ul>
+              <li>Animation</li>
+              <li>Core</li>
+              <li>CustomBlendingEquation</li>
+              <li>BufferAttributeUsage</li>
+              <li>Materials</li>
+              <li>Renderer</li>
+              <li>Textures</li>
+            </ul>
+          </h4>
+        </section>
+        <section>
+          <h3 align="center" style="color:#FFFF00">For Example </h3>
+          <h4>
+            Material constants define properties common to almost all material types.
+          </h4>
+        </section>
+        <section>
+          <h4>Examples of materials:</h4>
+          <embed src="https://threejs.org/examples/?q=mater#webgl_materials" width=600 height=600
+            onerror="alert('URL invalid !!');" />
+        </section>
+      </section>
+
+
+
+
+      <!--       Slide 11 -->
+      <section>
+
+        <section>
+          <h3>6. Lights</h3>
+          <h4 align="center" style="color:#FFFF00">There are various lights in three.js like: </h4>
+          <h4>
+            <ul>
+              <li>AmbientLight</li>
+              <li>AmbientLightProbe</li>
+              <li>DirectionalLight</li>
+              <li>HemisphereLight</li>
+              <li>HemisphereLightProbe</li>
+              <li>Light</li>
+              <li>LightProbe</li>
+              <li>PointLight</li>
+              <li>RectAreaLight</li>
+              <li>SpotLight</li>
+            </ul>
+          </h4>
+        </section>
+
+        <section>
+          <h4 align="left">Ambient light globally illuminates all objects in the scene equally.</h4>
+          <h4 align="left">The spotlight light gets emitted from a single point in one direction, along a cone that
+            increases in size
+            the further from the light it gets.</h4>
+        </section>
+
+        <section>
+          <h4>A cool visual of spotlight:</h4>
+          <embed src="https://threejs.org/examples/?q=light#webgl_lights_spotlights" width=600 height=600
+            onerror="alert('URL invalid !!');" />
+        </section>
+
+
+      </section>
+
+
+
+
+
+
+      <!--       Slide 12 -->
+      <section>
+        <section>
+          <h3>7. Loaders</h3>
+          <h4 align="center" style="color:#FFFF00">Some of the loaders in three.js are:</h4>
+          <h4>
+            <ul>
+              <li>AnimationLoader</li>
+              <li> AudioLoader</li>
+              <li>BufferGeometryLoader</li>
+              <li>MaterialLoader</li>
+              <li>ObjectLoader</li>
+              <li>TextureLoader</li>
+            </ul>
+          </h4>
+        </section>
+        <section>
+          <h3 align="center" style="color:#FFFF00">For Example,</h3>
+          <h4>ObjectLoader is a loader for loading a JSON resource in the JSON Object/Scene format.</h4>
+        </section>
+        <section>
+          <h4>Example of Object Loader: </h4>
+          <embed src="https://threejs.org/examples/?q=lightmap#webgl_materials_lightmap" width=600 height=600
+            onerror="alert('URL invalid !!');" />
+        </section>
+      </section>
+
+      <section>
+        <h3 align="center" style="color:#FFFF00">Working Project</h3>
+        <h5>We will now present a demo of a working project that we have made which uses three.js, aframe and socket.io
+        </h5>
+      </section>
+
+    </div>
+  </div>
+
+
+  <!-- Important reveal.js script & plugins below-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.151.3/three.min.js"></script>
+  <script src="https://unpkg.com/reveal.js@4//dist/reveal.js"></script>
+
+  <script src="https://unpkg.com/reveal.js@4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@4//plugin/zoom/zoom.js"></script>
+
+  <script>
+    // Full list of configuration options available at:
+    // https://revealjs.com/config/
+
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      // Push each slide change to the browser history
+      history: false,
+      // Enable keyboard shortcuts for navigation
+      keyboard: true,
+      // Loop the presentation
+      loop: false,
+      // Number of milliseconds between automatically proceeding to the 
+      // next slide, disabled when set to 0
+      autoSlide: 0,
+      // Enable slide navigation via mouse wheel
+      mouseWheel: true,
+      // Apply a 3D roll to links on hover
+      rollingLinks: true,
+      // Transition style
+      transition: 'cube', // default/cube/page/concave/linear(2d)
+      // added ex-post
+      slideNumber: 'c/t'
+    });
+  </script>
+
+</body>
+
+</html>
